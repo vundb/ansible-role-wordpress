@@ -1,0 +1,28 @@
+#
+# Configuration dictionary
+#
+# wordpress_config:
+#   db_name: wordpress
+#   db_user: wordpress
+#   db_password: wordpress
+#   db_host: localhost
+#   db_charset: utf8
+#   db_collate:
+#   table_prefix: wp_
+#   auth_key:
+#   secure_auth_key:
+#   logged_in_key:
+#   nonce_key:
+#   auth_salt:
+#   secure_auth_salt:
+#   logged_in_salt:
+#   nonce_salt:
+#
+wordpress_config: ~
+
+#
+# Version of the Wordpress instance
+# Supported versions are
+#   - >= 4.9 and < 5.0
+#
+wordpress_version: "4.9.8"

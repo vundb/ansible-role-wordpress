@@ -1,0 +1,8 @@
+---
+
+- name: write configuration file
+  template:
+    src: wp-config-49.j2
+    dest: "{{ wordpress_directory }}/wp-config.php"
+    mode: 0644
+  when: "wordpress_version is version('4.9', '>=') and wordpress_version is version('12.04', '<')"

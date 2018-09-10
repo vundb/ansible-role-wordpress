@@ -1,0 +1,115 @@
+<?php
+/**
+ * Grundeinstellungen für WordPress
+ *
+ * Zu diesen Einstellungen gehören:
+ *
+ * * MySQL-Zugangsdaten,
+ * * Tabellenpräfix,
+ * * Sicherheitsschlüssel
+ * * und ABSPATH.
+ *
+ * Mehr Informationen zur wp-config.php gibt es auf der
+ * {@link https://codex.wordpress.org/Editing_wp-config.php wp-config.php editieren}
+ * Seite im Codex. Die Zugangsdaten für die MySQL-Datenbank
+ * bekommst du von deinem Webhoster.
+ *
+ * Diese Datei wird zur Erstellung der wp-config.php verwendet.
+ * Du musst aber dafür nicht das Installationsskript verwenden.
+ * Stattdessen kannst du auch diese Datei als wp-config.php mit
+ * deinen Zugangsdaten für die Datenbank abspeichern.
+ *
+ * @package WordPress
+ */
+
+// ** MySQL-Einstellungen ** //
+/**   Diese Zugangsdaten bekommst du von deinem Webhoster. **/
+
+/**
+ * Ersetze datenbankname_hier_einfuegen
+ * mit dem Namen der Datenbank, die du verwenden möchtest.
+ */
+define('DB_NAME', '{{ wordpress_config.db_name | default("") }}');
+
+/**
+ * Ersetze benutzername_hier_einfuegen
+ * mit deinem MySQL-Datenbank-Benutzernamen.
+ */
+define('DB_USER', '{{ wordpress_config.db_user | default("") }}');
+
+/**
+ * Ersetze passwort_hier_einfuegen mit deinem MySQL-Passwort.
+ */
+define('DB_PASSWORD', '{{ wordpress_config.db_password | default("") }}');
+
+/**
+ * Ersetze localhost mit der MySQL-Serveradresse.
+ */
+define('DB_HOST', '{{ wordpress_config.db_host | default("localhost") }}');
+
+/**
+ * Der Datenbankzeichensatz, der beim Erstellen der
+ * Datenbanktabellen verwendet werden soll
+ */
+define('DB_CHARSET', '{{ wordpress_config.db_charset | default("utf8") }}');
+
+/**
+ * Der Collate-Type sollte nicht geändert werden.
+ */
+define('DB_COLLATE', '{{ wordpress_config.db_collate | default("") }}');
+
+/**#@+
+ * Sicherheitsschlüssel
+ *
+ * Ändere jeden untenstehenden Platzhaltertext in eine beliebige,
+ * möglichst einmalig genutzte Zeichenkette.
+ * Auf der Seite {@link https://api.wordpress.org/secret-key/1.1/salt/ WordPress.org secret-key service}
+ * kannst du dir alle Schlüssel generieren lassen.
+ * Du kannst die Schlüssel jederzeit wieder ändern, alle angemeldeten
+ * Benutzer müssen sich danach erneut anmelden.
+ *
+ * @since 2.6.0
+ */
+define('AUTH_KEY',         '{{ wordpress_config.auth_key | default("!X-1LE9o!T>zr19@`CO6c~CXD.*2Xq R,F7o_=Bb5$!k@S3qs]kNnJc6ur-:yR6I") }}');
+define('SECURE_AUTH_KEY',  '{{ wordpress_config.secure_auth_key | default("KU!{ltBdx1aLBv~nnxwrhIpO[,hCVpHR9 %*#3ZI##fpyMQ1>mky4Iht6<}#t6|b") }}');
+define('LOGGED_IN_KEY',    '{{ wordpress_config.logged_in_key | default("u&.!$!HmZ}s[%7;RR|$1AZ6wyXF|2dI8%s=*,<$x,}%O3/X(P;[|%bI?%CdkioG`") }}');
+define('NONCE_KEY',        '{{ wordpress_config.nonce_key | default("@?4zIfy+!?v.HJ@Ahd9sc!$-dRPdP:<+h^VIft;MIB~UB4; @^Ix [%mgv )q%rW") }}');
+define('AUTH_SALT',        '{{ wordpress_config.auth_salt | default("|Oe+I+{t)MyQG*u+_, mBMx!)(@nDKOD<^n~iP{0X Wbwi] :p[p:D=UVaJ-TqwK") }}');
+define('SECURE_AUTH_SALT', '{{ wordpress_config.secure_auth_salt | default("_qg7ON.U;;N/<U[(0xysIU5PCDwHyW>ENFHq;2Ehx9Z5VX,EGy>ue}3lfqhp@+3l") }}');
+define('LOGGED_IN_SALT',   '{{ wordpress_config.logged_in_salt | default("6jJMfh2-+M.z~6FVk#[Rg,9-?E}Yvl5jd%HtD.0+qgWF[Pu$*G{a^z_hm:_{YM(A") }}');
+define('NONCE_SALT',       '{{ wordpress_config.nonce_salt | default("N4su5]}{_S|to3SJ}acXDs?_+@bCS>6o|*`:+wfl8DTf0o!3=<zDGghp;iSJa-?/") }}');
+
+/**#@-*/
+
+/**
+ * WordPress Datenbanktabellen-Präfix
+ *
+ * Wenn du verschiedene Präfixe benutzt, kannst du innerhalb einer Datenbank
+ * verschiedene WordPress-Installationen betreiben.
+ * Bitte verwende nur Zahlen, Buchstaben und Unterstriche!
+ */
+$table_prefix  = '{{ wordpress_config.table_prefix | default("wp_") }}';
+
+/**
+ * Für Entwickler: Der WordPress-Debug-Modus.
+ *
+ * Setze den Wert auf „true“, um bei der Entwicklung Warnungen und Fehler-Meldungen angezeigt zu bekommen.
+ * Plugin- und Theme-Entwicklern wird nachdrücklich empfohlen, WP_DEBUG
+ * in ihrer Entwicklungsumgebung zu verwenden.
+ *
+ * Besuche den Codex, um mehr Informationen über andere Konstanten zu finden,
+ * die zum Debuggen genutzt werden können.
+ *
+ * @link https://codex.wordpress.org/Debugging_in_WordPress
+ */
+define('WP_DEBUG', false);
+
+/* Das war’s, Schluss mit dem Bearbeiten! Viel Spaß beim Bloggen. */
+/* That's all, stop editing! Happy blogging. */
+
+/** Der absolute Pfad zum WordPress-Verzeichnis. */
+if ( !defined('ABSPATH') )
+	define('ABSPATH', dirname(__FILE__) . '/');
+
+/** Definiert WordPress-Variablen und fügt Dateien ein.  */
+require_once(ABSPATH . 'wp-settings.php');
